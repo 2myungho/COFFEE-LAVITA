@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.news-event{
+  width:100%;
+  height:100px;
+}
+.event-accordion2{
+  background:#e0d7d3;
+  color:#444;
+  cursor: pointer;
+  padding: 18px;
+  width: 50%;
+  height:100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  font-weight:bold;
+  transition: 0.4s;
+  float:right;
+   /*position: relative;*/ 
+}
+.event-accordion2{float:right; background:#e0d7d3; color:#444;}
+
+.active, .news-accordion1:hover {
+  background-color: #ccc;
+}
+.active, .event-accordion2:hover {
+  background-color: #ccc;
+}
+.news-accordion1:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+.event-accordion2:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.news-panel {
+width:48%;
+  padding: 0 19px;
+  background-color: white;
+  max-height:0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+   /*position: absolute;
+   top:110px;
+   left:0;*/
+	
+}
+.event-panel {
+width:48%;
+  padding: 0 19px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+   /*position: absolute;
+   top:110px;
+   right:0;*/
+	
+}
+.boxbox{width:1920px; background:yellow; height:500px}
+</style>
+</head>
+<body>
+
+<div class="news-event">
+<button class="news-accordion1">공지사항</button>
+<div class="news-panel">
+	
+</div>
+
+<button class="event-accordion2">이벤트</button>
+<div class="event-panel">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+</div>
+<div class="boxbox">
+</div>
+
+<script>
+var acc = document.getElementsByClassName("news-accordion1");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+
+var acc = document.getElementsByClassName("event-accordion2");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = 150;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+</body>
+</html>
+
+$("li").each(function () {
+	$(this).click(function () {
+		$(this).addClass("selected");                     
+		$(this).siblings().removeClass("selected");  
+	});
+});
